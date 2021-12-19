@@ -1,8 +1,9 @@
 <template>
   <div class="card text-center mt-4 shadow-sm">
-    <div class="card-body">
+    <div class="card-body p-0">
+      <div class="profile p-5"></div>
       <div class="d-flex justify-content-end">
-        <a href>
+        <a href style="margin-top:-80px; margin-right:4px">
           <i class="fa fa-pencil fa-1x"></i>
         </a>
       </div>
@@ -11,7 +12,7 @@
         alt
         height="100"
         width="100"
-        class="rounded-circle border text-center"
+        class="rounded-circle border text-center avatar border-5"
         id="avatar"
         style="margin-left:20px"
       />
@@ -52,8 +53,17 @@ export default {
   background-color: #e4ebe4;
 }
 
+.profile {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-image: linear-gradient( to bottom right, #14a800, transparent);
+}
+
+.avatar{
+  margin-top: -50px;
+}
 .fa-pencil {
-  color: #14a800;
+  color: #2B5468;
 }
 .card {
   background-color: #fff;
