@@ -194,8 +194,7 @@ export default {
       alert: "",
       image: "",
       username: "",
-      email: "",
-      BASE_URL: "patients",
+      email: ""
     };
   },
   methods: {
@@ -224,9 +223,7 @@ export default {
           district: this.patient.district,
           occupation: this.patient.occupation,
         };
-        let pHRsAPIEndpoint = `${sessionStorage.getItem("API_URL")}/${
-          this.BASE_URL
-        }`;
+        let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/patients`;
         axios
           .post(pHRsAPIEndpoint, patientPayload, {
             headers: {

@@ -107,8 +107,7 @@ export default {
         avatar: null,
         password: null,
         password_confirmation: null,
-      },
-      BASE_URL: "users",
+      }
     };
   },
   methods: {
@@ -138,9 +137,7 @@ export default {
             "password_confirmation",
             this.user.password_confirmation
           );
-          let pHRsAPIEndpoint = `${sessionStorage.getItem("API_URL")}/${
-            this.BASE_URL
-          }`;
+          let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/users`;
           axios
             .post(pHRsAPIEndpoint, userPayload)
             .then((response) => {

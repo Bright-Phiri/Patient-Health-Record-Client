@@ -72,14 +72,11 @@ export default {
   data() {
     return {
       providers: [],
-      BASE_URL: "users",
     };
   },
   methods: {
     fetchProviders() {
-      let pHRsAPIEndpoint = `${sessionStorage.getItem("API_URL")}/${
-        this.BASE_URL
-      }`;
+      let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/users`;
       axios
         .get(pHRsAPIEndpoint)
         .then((response) => {

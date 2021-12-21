@@ -68,8 +68,7 @@ export default {
       user: {
         username: null,
         password: null,
-      },
-      BASE_URL: "login",
+      }
     };
   },
   methods: {
@@ -85,9 +84,7 @@ export default {
           username: this.user.username,
           password: this.user.password,
         };
-        let pHRsAPIEndpoint = `${sessionStorage.getItem("API_URL")}/${
-          this.BASE_URL
-        }`;
+        let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/login`;
         axios
           .post(pHRsAPIEndpoint, userPayload)
           .then((response) => {
@@ -114,7 +111,7 @@ export default {
     },
   },
   mounted() {
-    sessionStorage.setItem("API_URL", "http://127.0.0.1:3000/api/v1");
+    sessionStorage.setItem("BASE_URL", "http://127.0.0.1:3000/api/v1");
   },
 };
 </script>

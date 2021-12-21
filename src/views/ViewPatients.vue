@@ -382,6 +382,7 @@ ul.timeline > li:before {
   height: 20px;
   z-index: 400;
 }
+
 .card-footer {
   background-color: #e4ebe4;
 }
@@ -403,6 +404,7 @@ h4 {
   margin-left: 10px;
 }
 </style>
+
 <script>
 import axios from "axios";
 // @ is an alias to /src
@@ -428,14 +430,11 @@ export default {
         temp_reading: null,
       },
       vitals: [],
-      BASE_URL: "patients",
     };
   },
   methods: {
     fetchPatients() {
-      let pHRsAPIEndpoint = `${sessionStorage.getItem("API_URL")}/${
-        this.BASE_URL
-      }`;
+      let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/patients`;
       axios
         .get(pHRsAPIEndpoint, {
           headers: {
@@ -472,9 +471,9 @@ export default {
           temp_reading: this.vital_signs.temp_reading,
           diagnosis: this.vital_signs.diagnosis,
         };
-        let pHRsAPIEndpoint = `${sessionStorage.getItem("API_URL")}/${
-          this.BASE_URL
-        }/${this.vital_signs.patient_id}/vital_signs`;
+        let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/patients/${
+          this.vital_signs.patient_id
+        }/vital_signs`;
         axios
           .post(pHRsAPIEndpoint, vital_signsPayload, {
             headers: {
@@ -502,9 +501,9 @@ export default {
     },
 
     fetchHealthRecord(patient_id) {
-      let pHRsAPIEndpoint = `${sessionStorage.getItem("API_URL")}/${
-        this.BASE_URL
-      }/${patient_id}/vital_signs/${patient_id}`;
+      let pHRsAPIEndpoint = `${sessionStorage.getItem(
+        "BASE_URL"
+      )}/patients/${patient_id}/vital_signs/${patient_id}`;
       axios
         .get(pHRsAPIEndpoint, {
           headers: {

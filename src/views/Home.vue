@@ -113,14 +113,11 @@ export default {
       patients: 0,
       vital_signs: 0,
       providers: 0,
-      BASE_URL: "statistics",
     };
   },
   methods: {
     loadStati() {
-      let pHRsAPIEndpoint = `${sessionStorage.getItem("API_URL")}/${
-        this.BASE_URL
-      }`;
+      let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/statistics`;
       axios
         .get(pHRsAPIEndpoint, {
           headers: {
