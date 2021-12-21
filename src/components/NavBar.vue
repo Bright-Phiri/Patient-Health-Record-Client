@@ -3,9 +3,9 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="logoutModal"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="logoutModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
@@ -74,7 +74,7 @@
       <button
         class="btn text-white"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#logoutModal"
         style="margin-right:15px;margin-left:10px"
       >
         <i class="fa fa-sign-out fa-lg"></i>
