@@ -384,7 +384,7 @@ export default {
       patients: [],
       vital_signs: {
         patient_id: null,
-        diagnosis: null,
+        diagnosis: "",
         weight: null,
         height: null,
         temp_reading: null,
