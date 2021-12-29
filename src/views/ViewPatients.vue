@@ -348,7 +348,7 @@
   </AppView>
 </template>
 
-<style>
+<style scoped>
 ul.timeline {
   list-style-type: none;
   position: relative;

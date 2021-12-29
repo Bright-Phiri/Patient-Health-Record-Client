@@ -86,7 +86,7 @@
   </AppView>
 </template>
 
-<style>
+<style scoped>
 .card-footer {
   background-color: #e4ebe4;
 }

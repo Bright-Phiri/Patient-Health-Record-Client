@@ -125,7 +125,7 @@
     </AppView>
 </template>
 
-<style>
+<style scoped>
 .cancel {
     background-color: #7c819c;
     color: #fff;

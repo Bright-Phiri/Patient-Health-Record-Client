@@ -45,7 +45,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .login-btn {
     background-color: #14a800;
     color: white;
