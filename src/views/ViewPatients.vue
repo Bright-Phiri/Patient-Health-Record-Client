@@ -13,18 +13,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Add Medical Record</h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form
-              v-on:submit.prevent="addMedicalRecord"
-              id="health-records-form"
-            >
+            <form v-on:submit.prevent="addMedicalRecord" id="health-records-form">
               <input type="hidden" id="patient-id" name="patient-id" />
               <div class="form-group">
                 <label for="weight">Weight (Kgs)</label>
@@ -70,12 +62,10 @@
                   name="diagnosis"
                   v-model="vital_signs.diagnosis"
                 >
-                  <option value>Select</option>
+                  <option disabled value>Select</option>
                   <option
                     value="A00-B99|Certain infectious and parasitic diseases"
-                  >
-                    Certain infectious and parasitic diseases
-                  </option>
+                  >Certain infectious and parasitic diseases</option>
                   <option value="C00-D49|Neoplasms">Neoplasms</option>
                   <option
                     value="D50-D89|Diseases of the blood and blood-forming organs and certain
@@ -87,57 +77,43 @@
                   </option>
                   <option
                     value="E00-E89|Endocrine, nutritional and metabolic diseases"
-                  >
-                    Endocrine, nutritional and metabolic diseases
-                  </option>
+                  >Endocrine, nutritional and metabolic diseases</option>
                   <option
                     value="F01-F99|Mental, Behavioral and Neurodevelopmental disorders"
-                  >
-                    Mental, Behavioral and Neurodevelopmental disorders
-                  </option>
-                  <option value="G00-G99|Diseases of the nervous system">
-                    Diseases of the nervous system
-                  </option>
-                  <option value="H00-H59|Diseases of the eye and adnexa">
-                    Diseases of the eye and adnexa
-                  </option>
+                  >Mental, Behavioral and Neurodevelopmental disorders</option>
+                  <option
+                    value="G00-G99|Diseases of the nervous system"
+                  >Diseases of the nervous system</option>
+                  <option
+                    value="H00-H59|Diseases of the eye and adnexa"
+                  >Diseases of the eye and adnexa</option>
                   <option
                     value="H60-H95|Diseases of the ear and mastoid process"
-                  >
-                    Diseases of the ear and mastoid process
-                  </option>
-                  <option value="I00-I99|Diseases of the circulatory system">
-                    Diseases of the circulatory system
-                  </option>
-                  <option value="J00-J99|Diseases of the respiratory system">
-                    Diseases of the respiratory system
-                  </option>
-                  <option value="K00-K95|Diseases of the digestive system">
-                    Diseases of the digestive system
-                  </option>
+                  >Diseases of the ear and mastoid process</option>
+                  <option
+                    value="I00-I99|Diseases of the circulatory system"
+                  >Diseases of the circulatory system</option>
+                  <option
+                    value="J00-J99|Diseases of the respiratory system"
+                  >Diseases of the respiratory system</option>
+                  <option
+                    value="K00-K95|Diseases of the digestive system"
+                  >Diseases of the digestive system</option>
                   <option
                     value="L00-L99|Diseases of the skin and subcutaneous tissue"
-                  >
-                    Diseases of the skin and subcutaneous tissue
-                  </option>
+                  >Diseases of the skin and subcutaneous tissue</option>
                   <option
                     value="M00-M99|Diseases of the musculoskeletal system and connective tissue"
-                  >
-                    Diseases of the musculoskeletal system and connective tissue
-                  </option>
-                  <option value="N00-N99|Diseases of the genitourinary system">
-                    Diseases of the genitourinary system
-                  </option>
+                  >Diseases of the musculoskeletal system and connective tissue</option>
+                  <option
+                    value="N00-N99|Diseases of the genitourinary system"
+                  >Diseases of the genitourinary system</option>
                   <option
                     value="O00-O9A|Pregnancy, childbirth and the puerperium"
-                  >
-                    Pregnancy, childbirth and the puerperium
-                  </option>
+                  >Pregnancy, childbirth and the puerperium</option>
                   <option
                     value="P00-P96|Certain conditions originating in the perinatal period"
-                  >
-                    Certain conditions originating in the perinatal period
-                  </option>
+                  >Certain conditions originating in the perinatal period</option>
                   <option
                     value="Q00-Q99|Congenital malformations, deformations and chromosomal
                                 abnormalities"
@@ -161,12 +137,8 @@
                     Injury, poisoning and certain other consequences of external
                     causes
                   </option>
-                  <option value="U00-U85|Codes for special purposes">
-                    Codes for special purposes
-                  </option>
-                  <option value="V00-Y99|External causes of morbidity">
-                    External causes of morbidity
-                  </option>
+                  <option value="U00-U85|Codes for special purposes">Codes for special purposes</option>
+                  <option value="V00-Y99|External causes of morbidity">External causes of morbidity</option>
                   <option
                     value="Z00-Z99 Factors influencing health status and contact with health
                                 services"
@@ -182,9 +154,7 @@
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
-              >
-                Close
-              </button>
+              >Close</button>
               &nbsp;
               <button type="submit" class="btn btn-success">Save</button>
             </form>
@@ -206,12 +176,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Patient's health history</h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form>
@@ -220,9 +185,11 @@
             <ul class="timeline">
               <li v-for="vital in vitals" :key="vital.id">
                 <a class="text-decoration-none">Vital Signs</a>
-                <a class="float-end text-decoration-none">{{
-                  vital.created_at.substr(0, 7)
-                }}</a>
+                <a class="float-end text-decoration-none">
+                  {{
+                    vital.created_at.substr(0, 7)
+                  }}
+                </a>
                 <table class="table table-bordered mt-2">
                   <thead class="thead-light">
                     <tr>
@@ -257,21 +224,14 @@
                         vital.diagnosis.split('|').shift()
                       "
                       target="_blank"
-                      >View Diagnosis</a
-                    >
+                    >View Diagnosis</a>
                   </div>
                 </div>
               </li>
             </ul>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -471,9 +431,8 @@ export default {
           temp_reading: this.vital_signs.temp_reading,
           diagnosis: this.vital_signs.diagnosis,
         };
-        let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/patients/${
-          this.vital_signs.patient_id
-        }/vital_signs`;
+        let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/patients/${this.vital_signs.patient_id
+          }/vital_signs`;
         axios
           .post(pHRsAPIEndpoint, vital_signsPayload, {
             headers: {
