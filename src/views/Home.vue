@@ -27,7 +27,7 @@
                   </div>
                 </div>
                 <div class="card footer p-1" style="border-radius: 0">
-                  <router-link to="/addpatient">Create patient</router-link>
+                  <router-link to="/addpatient" class="link">Create patient</router-link>
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@
                   </div>
                 </div>
                 <div class="card footer p-1" style="border-radius: 0">
-                  <router-link to="/viewpatients">View patients</router-link>
+                  <router-link to="/viewpatients" class="link">View patients</router-link>
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@
                   </div>
                 </div>
                 <div class="card footer p-1" style="border-radius: 0">
-                  <router-link to="/viewpatients"
+                  <router-link to="/viewpatients" class="link"
                     >View users / providers</router-link
                   >
                 </div>
@@ -95,7 +95,7 @@
   border-radius: 10px;
 }
 
-.router-link{
+.link{
   color: #14a800;
 }
 </style>
