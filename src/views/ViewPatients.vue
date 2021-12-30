@@ -404,7 +404,7 @@ export default {
           this.patients = response.data.data;
         })
         .catch((error) => {
-          console.log(error);
+          this.$swal("Error",error+", Couldn't reach API", "error");
         });
     },
     selectPatient(id) {
@@ -453,7 +453,7 @@ export default {
             }
           })
           .catch((error) => {
-            console.log(error);
+            this.$swal("Error",error+", Couldn't reach API", "error");
           });
       }
     },
@@ -477,7 +477,7 @@ export default {
           }
         })
         .catch((error) => {
-          console.log(error);
+          this.$swal("Error",error+", Couldn't reach API", "error");
         });
     },
   },

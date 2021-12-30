@@ -243,7 +243,7 @@ export default {
                         });
                     })
                     .catch((error) => {
-                        console.log(error);
+                        this.$swal("Error",error+", Couldn't reach API", "error");
                     });
             }
         },

@@ -152,7 +152,7 @@ export default {
               }
             })
             .catch((error) => {
-              console.log(error);
+              this.$swal("Error",error+", Couldn't reach API", "error");
             });
         } else {
           this.$swal("Error", "Passwords dont match", "error");
