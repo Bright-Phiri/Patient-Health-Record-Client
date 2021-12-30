@@ -94,6 +94,10 @@
   background-color: #fff;
   border-radius: 10px;
 }
+
+.router-link{
+  color: #14a800;
+}
 </style>
 <script>
 import axios from "axios";
