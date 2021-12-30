@@ -1,7 +1,11 @@
 <template>
   <NavBar></NavBar>
   <AppView>
-    <!-- Modal -->
+    <template v-slot:profile>
+        <Profile></Profile>
+    </template>
+    <template v-slot:page-content>
+     <!-- Modal -->
     <div
       class="modal fade"
       id="medicalRecordModal"
@@ -244,10 +248,6 @@
       data-bs-toggle="modal"
       data-bs-target="#medicalRecordsModal"
     ></button>
-    <template v-slot:profile>
-        <Profile></Profile>
-    </template>
-    <template v-slot:page-content>
         <div class="card card-view-patients mt-4">
         <div class="mt-4">
           <h4>Patients list</h4>
