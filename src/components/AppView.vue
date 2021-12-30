@@ -1,7 +1,12 @@
 <template>
   <div class="container-fluid">
         <div class="row">
-          <slot></slot>
+          <div class="col-3">
+             <slot name="profile"></slot>
+          </div>
+          <div class="col-9">
+            <slot name="page-content"></slot>
+          </div>
         </div>
   </div>
 </template>

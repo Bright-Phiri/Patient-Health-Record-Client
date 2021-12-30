@@ -244,12 +244,11 @@
       data-bs-toggle="modal"
       data-bs-target="#medicalRecordsModal"
     ></button>
-
-    <div class="col-3">
-      <Profile></Profile>
-    </div>
-    <div class="col-9">
-      <div class="card card-view-patients mt-4">
+    <template v-slot:profile>
+        <Profile></Profile>
+    </template>
+    <template v-slot:page-content>
+        <div class="card card-view-patients mt-4">
         <div class="mt-4">
           <h4>Patients list</h4>
           <hr />
@@ -304,7 +303,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </template>
   </AppView>
 </template>
 

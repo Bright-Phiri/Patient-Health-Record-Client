@@ -1,11 +1,11 @@
 <template>
   <NavBar></NavBar>
   <AppView>
-    <div class="col-3">
-      <Profile></Profile>
-    </div>
-    <div class="col-9">
-      <div class="card card-home mt-4">
+    <template v-slot:profile>
+        <Profile></Profile>
+    </template>
+    <template v-slot:page-content>
+         <div class="card card-home mt-4">
         <div class="card-body">
           <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
@@ -82,7 +82,7 @@
           </div>
         </div>
       </div>
-    </div>
+     </template>
   </AppView>
 </template>
 

@@ -1,11 +1,11 @@
 <template>
     <NavBar></NavBar>
     <AppView>
-        <div class="col-3">
-            <Profile></Profile>
-        </div>
-        <div class="col-9">
-            <div class="card card-add mt-4">
+       <template v-slot:profile>
+         <Profile></Profile>
+       </template>
+       <template v-slot:page-content>
+           <div class="card card-add mt-4">
                 <div class="mt-4">
                     <h4>Patient Details</h4>
                     <hr />
@@ -121,7 +121,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+       </template>
     </AppView>
 </template>
 
