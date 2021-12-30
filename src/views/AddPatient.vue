@@ -146,14 +146,17 @@
     color: #fff;
     border-radius: 17px;
 }
-h4 {
-    margin-left: 10px;
-    color: #14a800;
-}
 
 hr {
-    margin-left: 10px;
-    margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 20px;
+  color: #14a800;
+  padding: 1px;
+}
+
+h4 {
+  color: #14a800;
+  margin-left: 10px;
 }
 .card-footer {
     background-color: #e4ebe4;

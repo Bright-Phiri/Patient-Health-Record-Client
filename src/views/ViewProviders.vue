@@ -49,7 +49,6 @@ hr {
   color: #14a800;
   padding: 1px;
 }
-
 h4 {
   color: #14a800;
   margin-left: 10px;
