@@ -12,7 +12,12 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title text-success">Logout</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div class="modal-body">
             <p class="text-dark">Are you sure you want to logout?</p>
@@ -24,8 +29,13 @@
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
                 id="close"
-              >Close</button> &nbsp;
-              <button v-on:click="logOut" type="submit" class="btn btn-success">Logout</button>
+              >
+                Close
+              </button>
+              &nbsp;
+              <button v-on:click="logOut" type="submit" class="btn btn-success">
+                Logout
+              </button>
             </form>
           </div>
         </div>
@@ -52,13 +62,19 @@
           <router-link to="/" class="nav-link">Home</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/addpatient" class="nav-link">Add Patient</router-link>
+          <router-link to="/addpatient" class="nav-link"
+            >Add Patient</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link to="/viewpatients" class="nav-link">Patients</router-link>
+          <router-link to="/viewpatients" class="nav-link"
+            >Patients</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link to="/viewproviders" class="nav-link">Providers</router-link>
+          <router-link to="/viewproviders" class="nav-link"
+            >Providers</router-link
+          >
         </li>
       </ul>
     </div>
@@ -75,7 +91,7 @@
         class="btn text-white"
         data-bs-toggle="modal"
         data-bs-target="#logoutModal"
-        style="margin-right:15px;margin-left:10px"
+        style="margin-right: 15px; margin-left: 10px"
       >
         <i class="fa fa-sign-out fa-lg"></i>
       </button>
@@ -111,28 +127,27 @@ export default {
   name: "NavBar",
   data() {
     return {
-      avatar: ''
-    }
+      avatar: "",
+    };
   },
   methods: {
     loadImage() {
-      this.avatar = sessionStorage.getItem("avatar")
+      this.avatar = sessionStorage.getItem("avatar");
     },
 
     logOut() {
       sessionStorage.removeItem("Authorization");
       sessionStorage.removeItem("user");
       sessionStorage.removeItem("avatar");
-      document.getElementById('close').click();
-      this.$router.push({ path: '/login' });
-    }
+      document.getElementById("close").click();
+      this.$router.push({ path: "/login" });
+    },
   },
   mounted() {
     this.loadImage();
-  }
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>
+<style scoped></style>

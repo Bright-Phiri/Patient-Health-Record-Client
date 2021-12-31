@@ -2,10 +2,10 @@
   <NavBar></NavBar>
   <AppView>
     <template v-slot:profile>
-        <Profile></Profile>
+      <Profile></Profile>
     </template>
     <template v-slot:page-content>
-         <div class="card card-providers mt-4">
+      <div class="card card-providers mt-4">
         <div class="mt-4">
           <h4>Providers list</h4>
           <hr />
@@ -82,7 +82,7 @@ export default {
           this.providers = response.data;
         })
         .catch((error) => {
-          this.$swal("Error",error+", Couldn't reach API", "error");
+          this.$swal("Error", error + ", Couldn't reach API", "error");
         });
     },
   },

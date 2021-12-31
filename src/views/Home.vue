@@ -2,10 +2,10 @@
   <NavBar></NavBar>
   <AppView>
     <template v-slot:profile>
-        <Profile></Profile>
+      <Profile></Profile>
     </template>
     <template v-slot:page-content>
-         <div class="card card-home mt-4">
+      <div class="card card-home mt-4">
         <div class="card-body">
           <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
@@ -27,7 +27,9 @@
                   </div>
                 </div>
                 <div class="card footer p-1" style="border-radius: 0">
-                  <router-link to="/addpatient" class="link">Create patient</router-link>
+                  <router-link to="/addpatient" class="link"
+                    >Create patient</router-link
+                  >
                 </div>
               </div>
             </div>
@@ -50,7 +52,9 @@
                   </div>
                 </div>
                 <div class="card footer p-1" style="border-radius: 0">
-                  <router-link to="/viewpatients" class="link">View patients</router-link>
+                  <router-link to="/viewpatients" class="link"
+                    >View patients</router-link
+                  >
                 </div>
               </div>
             </div>
@@ -82,7 +86,7 @@
           </div>
         </div>
       </div>
-     </template>
+    </template>
   </AppView>
 </template>
 
@@ -95,7 +99,7 @@
   border-radius: 10px;
 }
 
-.link{
+.link {
   color: #14a800;
 }
 </style>
@@ -134,7 +138,7 @@ export default {
           this.providers = response.data.users;
         })
         .catch((error) => {
-          this.$swal("Error",error+", Couldn't reach API", "error");
+          this.$swal("Error", error + ", Couldn't reach API", "error");
         });
     },
   },

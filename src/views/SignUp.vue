@@ -107,7 +107,7 @@ export default {
         avatar: null,
         password: null,
         password_confirmation: null,
-      }
+      },
     };
   },
   methods: {
@@ -152,7 +152,7 @@ export default {
               }
             })
             .catch((error) => {
-              this.$swal("Error",error+", Couldn't reach API", "error");
+              this.$swal("Error", error + ", Couldn't reach API", "error");
             });
         } else {
           this.$swal("Error", "Passwords dont match", "error");
