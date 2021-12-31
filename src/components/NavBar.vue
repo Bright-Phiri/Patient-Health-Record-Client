@@ -46,7 +46,7 @@
               class="rounded-circle border text-center"
               id="avatar"
             />
-            &nbsp;
+            &nbsp;&nbsp;
           </li>
           <li class="nav-item">
             <button
