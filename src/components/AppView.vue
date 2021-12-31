@@ -1,10 +1,11 @@
+/* eslint-disable */
 <template>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-3 col-xl-3 col-md-3 col-sm-5">
+    <div class="row mt-5">
+      <div class="col-lg-3 col-xl-3 col-md-3 col-sm-12 mt-3">
         <slot name="profile"></slot>
       </div>
-      <div class="col-lg-9 col-xl-9 col-md-9 col-sm-12">
+      <div class="col-lg-9 col-xl-9 col-md-9 col-sm-12 mt-3">
         <slot name="page-content"></slot>
       </div>
     </div>
