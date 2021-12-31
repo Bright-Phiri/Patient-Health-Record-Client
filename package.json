@@ -42,7 +42,9 @@
         "parserOptions": {
             "parser": "babel-eslint"
         },
-        "rules": {}
+        "rules": {
+            "prettier/prettier": ["error", { "endOfLine": "off" }]
+        }
     },
     "browserslist": [
         "> 1%",
