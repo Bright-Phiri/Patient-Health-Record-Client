@@ -1,120 +1,77 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-xl-4 col-lg-4 col-sm-7 col-xs-4 col-md-5 m-auto">
-        <div class="card my-5 shadow-sm" style="border-radius: 10px">
-          <div class="card-header">
-            <h5 class="text-center text-dark">Welcome Please Sign In</h5>
-          </div>
-          <div class="card-body">
-            <form v-on:submit.prevent="login">
-              <div class="form-group">
-                <input
-                  type="text"
-                  id="username"
-                  class="form-control"
-                  placeholder="Username"
-                  v-model.trim="user.username"
-                />
-              </div>
-
-              <div class="form-group pt-2">
-                <input
-                  type="password"
-                  id="password"
-                  class="form-control"
-                  placeholder="Password"
-                  v-model.trim="user.password"
-                />
-              </div>
-
-              <button
-                class="btn login-btn mt-2 col-12"
-                type="submit"
-                id="loginBtn"
-              >
-                Login
-              </button>
-              <p class="text-center mt-2">
-                Dont have an Account?
-                <router-link to="/signup">Create</router-link>
-              </p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <v-container fluid>
+        <v-row align="center" justify="center">
+            <v-col class="col=xl-3 col-lg-3 col-sm-6 col-xs-5 col-md-4">
+                <div class="text-center">
+                     <v-avatar size="90" class="text-center">
+                        <v-img src="../assets/logo.jpg"></v-img>
+                    </v-avatar>
+                </div>
+                <p class="text-center font-weight-light">Sign in to HealthRecord</p> 
+                <v-card>
+                    <v-card-text>
+                      <v-form v-on:submit.prevent="signIn">
+                           <v-text-field label="Username" autocomplete="false" prepend-icon="person" v-model.trim="user.username"></v-text-field>
+                           <v-text-field label="Password" autocomplete="false" prepend-icon="lock" type="password" v-model.trim="user.password"></v-text-field>
+                           <v-btn type="submit" dark color="primary" block :loading="loading">Sign in</v-btn>
+                      </v-form>
+                    </v-card-text>
+                </v-card> 
+                <v-card class="mt-2">
+                    <v-card-text>
+                      New to TaxPayer? <router-link to="/signup" >Create an account.</router-link> 
+                    </v-card-text>
+                </v-card>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
-<style scoped>
-.login-btn {
-  background-color: #14a800;
-  color: white;
-}
-
-.login-btn:hover {
-  color: white;
-}
-</style>
-
 <script>
-import axios from "axios";
-
+import axios from 'axios'
 export default {
-  name: "Login",
-  data() {
-    return {
-      user: {
-        username: null,
-        password: null,
-      },
-    };
-  },
-  methods: {
-    login() {
-      if (!this.user.username || !this.user.password) {
-        this.$swal(
-          "Fields validation",
-          "Please enter in all fields",
-          "warning"
-        );
-      } else {
-        let userPayload = {
-          username: this.user.username,
-          password: this.user.password,
-        };
-        let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/login`;
-        axios
-          .post(pHRsAPIEndpoint, userPayload)
-          .then((response) => {
-            if (response.data.status === "success") {
-              sessionStorage.setItem("Authorization", response.data.token);
-              sessionStorage.setItem("avatar", response.data.avatar);
-              sessionStorage.setItem(
-                "user",
-                JSON.stringify(response.data.user)
-              );
-              this.$swal("Message", response.data.message, "success").then(
-                () => {
-                  this.$router.push({ path: "/" });
-                }
-              );
-            } else {
-              this.$swal("Error", response.data.message, "error");
+   data () {
+       return {
+         user: {
+             username: null,
+             password: null
+         },
+         loading: false,
+       }
+   },
+   methods: {
+      signIn(){
+          if(!this.user.username || !this.user.password){
+            this.$swal("Fields validation", "Please fill in all required fields", "warning")
+          }else{
+            this.loading = true
+            let userPayload = {
+                username: this.user.username,
+                password: this.user.password
             }
-          })
-          .catch((error) => {
-            this.$swal("Error", error + ", Couldn't reach API", "error");
-          });
-      }
-    },
+            let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/login`;
+            axios
+               .post(pHRsAPIEndpoint,userPayload)
+               .then(response=>{
+                   if (response.data.status === "success"){
+                       sessionStorage.setItem("Authorization", response.data.token);
+                       sessionStorage.setItem("avatar", response.data.avatar);
+                       this.$router.push({path: '/'})
+                       this.loading = false
+                   } else {
+                       this.$swal(response.data.status, response.data.message, response.data.status)
+                       this.loading = false
+                   }
+               })
+               .catch(error=>{
+                 this.$swal("Error", error + ", Couldn't reach API", "error")
+                 this.loading = false
+               })
+          }
+       }
+   },
+   mounted() {
+    sessionStorage.setItem("BASE_URL", "https://patienthealthrecordapi.herokuapp.com/api/v1");
   },
-  mounted() {
-    sessionStorage.setItem(
-      "BASE_URL",
-      "https://patienthealthrecordapi.herokuapp.com/api/v1"
-    );
-  },
-};
+}
 </script>

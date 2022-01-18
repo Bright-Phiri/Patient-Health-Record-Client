@@ -1,129 +1,87 @@
 <template>
-  <NavBar></NavBar>
-  <AppView>
-    <template v-slot:profile>
-      <Profile></Profile>
-    </template>
-    <template v-slot:page-content>
-      <div class="card card-home mt-4">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
-              <div class="card mb-3" style="border-radius: 0">
-                <div
-                  class="card-header bg-secondary text-white"
-                  style="border-radius: 0"
-                >
-                  <div class="row">
-                    <div class="col-2">
-                      <i class="fa fa-users fa-3x"></i>
-                    </div>
-                    <div class="col justify-content-center">
-                      <h6 class="text-center">All Patients</h6>
-                      <h5 class="text-center text-white" id="patients">
-                        {{ patients }}
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="card footer p-1" style="border-radius: 0">
-                  <router-link to="/addpatient" class="link"
-                    >Create patient</router-link
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
-              <div class="card mb-2" style="border-radius: 0">
-                <div
-                  class="card-header bg-secondary text-white"
-                  style="border-radius: 0"
-                >
-                  <div class="row">
-                    <div class="col-2">
-                      <i class="fa fa-users fa-3x"></i>
-                    </div>
-                    <div class="col">
-                      <h6 class="text-center">Patient's health records</h6>
-                      <h5 class="text-center text-white" id="vital_signs">
-                        {{ vital_signs }}
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="card footer p-1" style="border-radius: 0">
-                  <router-link to="/viewpatients" class="link"
-                    >View patients</router-link
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
-              <div class="card mb-2" style="border-radius: 0">
-                <div
-                  class="card-header bg-secondary text-white"
-                  style="border-radius: 0"
-                >
-                  <div class="row">
-                    <div class="col-2">
-                      <i class="fa fa-users fa-3x"></i>
-                    </div>
-                    <div class="col">
-                      <h6 class="text-center">All Providers</h6>
-                      <h5 class="text-center text-white" id="providers">
-                        {{ providers }}
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="card footer p-1" style="border-radius: 0">
-                  <router-link to="/viewpatients" class="link"
-                    >View users / providers</router-link
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </template>
-  </AppView>
+  <div class="home">
+      <h3 class="subheading grey--text font-weight-light">Home</h3>
+      <v-row>
+        <v-col cols="12">
+          <v-card shaped>
+            <v-card-text>
+               <v-container fluid>
+                 <v-row>
+                   <v-col xl="4" lg="4" md="6" sm="6" xs="12">
+                     <v-alert
+                       border="left"
+                       colored-border
+                       color="success accent-4"
+                       elevation="2"
+                     >
+                     <v-row>
+                       <v-col><v-icon>mdi-account-multiple</v-icon></v-col>
+                       <v-col>
+                         <h6 class="text-center font-weight-light">Patients</h6>
+                           <h5 class="text-center text-white" id="patients">
+                            {{patients}}
+                           </h5>
+                       </v-col>
+                     </v-row>
+                   </v-alert>
+                   </v-col>
+                    <v-col xl="4" lg="4" md="6" sm="6" xs="12">
+                     <v-alert
+                       border="left"
+                       colored-border
+                       color="success accent-4"
+                       elevation="2"
+                     >
+                     <v-row>
+                       <v-col><v-icon>mdi-account-multiple</v-icon></v-col>
+                       <v-col>
+                         <h6 class="text-center font-weight-light">Providers</h6>
+                           <h5 class="text-center text-white" id="patients">
+                             {{providers}}
+                           </h5>
+                       </v-col>
+                     </v-row>
+                   </v-alert>
+                   </v-col>
+                    <v-col xl="4" lg="4" md="6" sm="6" xs="12">
+                     <v-alert
+                       border="left"
+                       colored-border
+                       color="success accent-4"
+                       elevation="2"
+                     >
+                     <v-row>
+                       <v-col><v-icon>mdi-heart-plus</v-icon></v-col>
+                       <v-col>
+                         <h6 class="text-center font-weight-light">Health Records</h6>
+                           <h5 class="text-center text-white" id="patients">
+                            {{vital_signs}}
+                           </h5>
+                       </v-col>
+                     </v-row>
+                   </v-alert>
+                   </v-col>
+                 </v-row>
+               </v-container>
+            </v-card-text>
+          </v-card> 
+        </v-col>
+      </v-row>
+  </div>
 </template>
 
-<style scoped>
-.card-footer {
-  background-color: #e4ebe4;
-}
-.card-home {
-  background-color: #fff;
-  border-radius: 10px;
-}
-
-.link {
-  color: #14a800;
-}
-</style>
 <script>
-import axios from "axios";
-// @ is an alias to /src
-import Profile from "@/components/Profile.vue";
-import NavBar from "@/components/NavBar.vue";
-import AppView from "@/components/AppView.vue";
-export default {
-  name: "Home",
-  components: {
-    Profile,
-    NavBar,
-    AppView,
-  },
-  data() {
-    return {
-      patients: 0,
-      vital_signs: 0,
-      providers: 0,
-    };
-  },
-  methods: {
+import axios from 'axios'
+  export default {
+    name: 'Home',
+    data () {
+      return{
+       patients: 0,
+       vital_signs: 0,
+       providers: 0,
+      }
+    },
+    methods: {
     loadStati() {
       let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/statistics`;
       axios
@@ -145,5 +103,5 @@ export default {
   mounted() {
     this.loadStati();
   },
-};
+  }
 </script>

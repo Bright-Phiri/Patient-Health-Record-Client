@@ -1,161 +1,79 @@
 <template>
-  <nav class="navbar navbar-expand-md fixed-top" style="background-color:#1d4354">
-    <div class="container-fluid">
-      <router-link to="/" class="navbar-brand"
-        ><img src="../assets/logo1.png" alt height="40" width="40"
-      ></router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarCollapse"
-        aria-controls="navbarCollapse"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <router-link to="/" class="nav-link">Home</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/addpatient" class="nav-link"
-              >Add Patient</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link to="/viewpatients" class="nav-link"
-              >Patients</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link to="/viewproviders" class="nav-link"
-              >Providers</router-link
-            >
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <img
-              v-bind:src="avatar"
-              alt
-              height="40"
-              width="40"
-              class="rounded-circle border text-center"
-              id="avatar"
-            />
-            &nbsp;&nbsp;
-          </li>
-          <li class="nav-item">
-            <button
-              class="btn text-white"
-              data-bs-toggle="modal"
-              data-bs-target="#logoutModal"
-              style="margin-right: 15px; margin-left: -10px"
-            >
-              Logout <i class="fa fa-sign-out fa-1x"></i>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div>
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="logoutModal"
-      tabindex="-1"
-      aria-labelledby="logoutModalLabel"
-      aria-hidden="true"
+    <div>
+        <nav>
+            <v-navigation-drawer color="primary" app v-model="drawer">
+        <v-list-item class="px-2">
+        <v-list-item-avatar color="white">
+          <v-img :src="avatar"></v-img>
+        </v-list-item-avatar>
+
+        <v-list-item-title class="white--text">Bright Issah</v-list-item-title>
+
+  
+      </v-list-item>
+
+      <v-divider class="mt-2"></v-divider>
+
+      <v-list dense shaped>
+        <v-list-item v-for="item in items" :key="item.title" link router :to="item.route"
+        >
+          <v-list-item-icon>
+            <v-icon dense color="white">{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title class="white--text font-weight-regular">{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar
+      app
+      flat
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title text-success">Logout</h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p class="text-dark">Are you sure you want to logout?</p>
-          </div>
-          <div class="modal-footer">
-            <form>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                id="close"
-              >
-                Close
-              </button>
-              &nbsp;
-              <button v-on:click="logOut" type="submit" class="btn btn-success">
-                Logout
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+    <v-app-bar-nav-icon class="grey--text" v-on:click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title class="text-uppercase grey--text">
+        <span class="font-weight-light">HRecord</span>
+        <span>App</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-avatar size="35" color="white">
+          <v-img :src="avatar"></v-img>
+      </v-avatar>
+      <v-btn class="ml-2 grey--text" depressed v-on:click="logout"><span>Sign Out</span> <v-icon right>mdi-logout-variant</v-icon></v-btn>
+    </v-app-bar>
+        </nav>
+         <router-view/>
     </div>
-  </div>
 </template>
 
-<style scoped>
-.navbar-brand {
-  margin-left: 30px;
-}
-
-.navbar {
-  background-color: #1d4354;
-  color: #fff;
-}
-
-#nav {
-  padding: 30px;
-}
-
-.navbar a {
-  color: #fff;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
-
 <script>
+
 export default {
-  name: "NavBar",
-  data() {
-    return {
-      avatar: "",
-    };
+  name: 'Navbar',
+  data () {
+     return{
+       drawer: false,
+       items: [
+          { title: 'Home', icon: 'mdi-home-city', route: '/' },
+          { title: 'Providers', icon: 'mdi-account-group-outline', route: '/providers'},
+          { title: 'Patients', icon: 'mdi-account-group-outline', route: '/patients' },
+        ],
+        avatar: null
+     }
   },
   methods: {
-    loadImage() {
+    loadAvatar() {
       this.avatar = sessionStorage.getItem("avatar");
     },
-
-    logOut() {
-      sessionStorage.removeItem("Authorization");
-      sessionStorage.removeItem("user");
-      sessionStorage.removeItem("avatar");
-      document.getElementById("close").click();
-      this.$router.push({ path: "/login" });
-    },
+    logout() {
+        sessionStorage.removeItem("Authorization");
+        sessionStorage.removeItem("avatar");
+        this.$router.push({ path: "/login" });
+    }
   },
-  mounted() {
-    this.loadImage();
-  },
+  mounted(){
+      this.loadAvatar()
+  }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
