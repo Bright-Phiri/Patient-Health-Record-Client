@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Navbar from '../components/Navbar.vue'
+import Navbar from '@/components/NavBar.vue'
 
 
 Vue.use(VueRouter)
