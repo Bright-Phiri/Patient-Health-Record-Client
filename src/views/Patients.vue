@@ -6,35 +6,61 @@
         <v-dialog v-model="addPatientDialog" transition="fab-transition" max-width="600px">
            <v-card>
              <v-card-title>
-               Patient Profile
+               Patient Details
              </v-card-title>
              <v-card-text>
-               <v-form>
+               <v-form ref="regForm" v-on:submit.prevent="addPatient">
                  <v-container>
                    <v-row>
                      <v-col cols="12" sm="6">
-                        <v-text-field label="First Name"></v-text-field>
+                        <v-text-field label="First Name" v-model.trim="patient.first_name" dense></v-text-field>
                      </v-col>
                      <v-col cols="12" sm="6">
-                       <v-text-field label="Last Name"></v-text-field>
+                       <v-text-field label="Last Name" v-model.trim="patient.last_name" dense></v-text-field>
                      </v-col>
                      <v-col cols="12" sm="6">
-
+                       <v-autocomplete label="Gender" :items="genders" v-model.trim="patient.gender" dense></v-autocomplete>
                      </v-col>
                      <v-col cols="12" sm="6">
-                       
+                        <v-menu
+                          v-model="menu2"
+                          :close-on-content-click="false"
+                          :nudge-right="40"
+                          transition="scale-transition"
+                          offset-y
+                          min-width="auto"
+                        >
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-text-field
+                              v-model="patient.dob"
+                              label="Date of Birth"
+                              prepend-icon="mdi-calendar"
+                              readonly
+                              v-bind="attrs"
+                              v-on="on"
+                              dense
+                             >
+                            </v-text-field>
+                          </template>
+                         <v-date-picker
+                            v-model="patient.dob"
+                            @input="menu2 = false"
+                           >
+                          </v-date-picker>
+                        </v-menu>
                      </v-col>
                      <v-col cols="12" sm="6">
-
+                        <v-text-field label="District" v-model.trim="patient.district" dense></v-text-field>
                      </v-col>
                      <v-col cols="12" sm="6">
-                       
+                        <v-text-field label="Village"  v-model.trim="patient.village" dense></v-text-field>
                      </v-col>
                      <v-col cols="12" sm="6">
-
+                       <v-autocomplete label="Occupation" :items="occupations" v-model="patient.occupation" dense></v-autocomplete>
                      </v-col>
                    </v-row>
                  </v-container>
+                 <v-btn v-on:click="addPatientDialog = !addPatientDialog" class="secondary">Cancel</v-btn> <v-btn type="submit" class="primary" :loading="addLoading1">Save</v-btn>
                </v-form>
              </v-card-text>
            </v-card>
@@ -133,6 +159,7 @@ export default {
       search: '',
       loading: false,
       addLoading: false,
+      addLoading1: false,
       dialog: false,
       addDialog: false,
       addPatientDialog: false,
@@ -174,7 +201,17 @@ export default {
         }
       ],
       genders: ['Male','Female'],
-      patient: [],
+      occupations: ['Construction worker','Accountant','Driver','Mechanic','Radiologist','Business Owner','Welder','Construction worker','Coal miner','Student','Software Developer','Painter'],
+      patients: [],
+      patient:{
+        first_name: null,
+        last_name: null,
+        gender: null,
+        dob: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+        village: null,
+        district: null,
+        occupation: null,
+      },
       vitals: [],
       vital_signs: {
         patient_id: null,
@@ -183,6 +220,9 @@ export default {
         height: null,
         temp_reading: null,
       },
+      menu: false,
+      modal: false,
+      menu2: false,
       diagnosisList: [{
         text: 'Certain infectious and parasitic diseases',
         value: 'A00-B99|Certain infectious and parasitic diseases'
@@ -220,6 +260,45 @@ export default {
     }
   },
   methods: {
+    addPatient() {
+      if (!this.patient.first_name || !this.patient.last_name || !this.patient.gender || !this.patient.dob || !this.patient.village || !this.patient.district || !this.patient.occupation) {
+        this.$swal("Fields validation","Please enter in all fields","warning")
+      } else {
+        this.addLoading1 = true
+        let patientPayload = {
+          first_name: this.patient.first_name,
+          last_name: this.patient.last_name,
+          gender: this.patient.gender,
+          dob: this.patient.dob,
+          village: this.patient.village,
+          district: this.patient.district,
+          occupation: this.patient.occupation,
+        };
+        let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/patients`;
+        axios
+          .post(pHRsAPIEndpoint, patientPayload, {
+            headers: {Authorization: `Bearer ${sessionStorage.getItem("Authorization")}`,
+            },
+          })
+          .then((response) => {
+            if (response.data.status === "success"){
+               this.addLoading1 = false
+               this.$swal("Information", response.data.message, "success").then(() => {
+               this.$refs.regForm.reset()
+               this.addPatientDialog = false
+               this.loadPatients()
+               });
+            } else{
+              this.$swal("error", response.data.message, "error")
+              this.addLoading1 = false
+            }
+          })
+          .catch((error) => {
+            this.$swal("Error", error + ", Couldn't reach API", "error");
+            this.addLoading1 = false
+          });
+      }
+    },
     loadPatients() {
       this.loading = true
       let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/patients`;
@@ -289,10 +368,9 @@ export default {
           .then((response) => {
             if (response.data.status === "success") {
               this.addLoading = false
-              this.$swal("Message", response.data.message, "success").then(
-                () => {
-                  this.addDialog = false
-                  this.$refs.form.reset()
+              this.$swal("Message", response.data.message, "success").then(() => {
+                  this.addDialog = false;
+                  this.$refs.form.reset();
                 }
               );
             } else {
@@ -313,7 +391,7 @@ export default {
   },
   mounted() {
     this.loadPatients()
-  }
+  },
 
 }
 </script>
