@@ -8,6 +8,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@capacitor/android": "^3.3.4",
+    "@capacitor/cli": "^3.3.4",
+    "@capacitor/core": "^3.3.4",
+    "@capacitor/ios": "^3.3.4",
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",

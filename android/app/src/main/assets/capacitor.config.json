@@ -1,0 +1,6 @@
+{
+	"appId": "healthapp.com",
+	"appName": "healthapp",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
