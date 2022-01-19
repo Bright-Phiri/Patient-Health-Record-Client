@@ -33,7 +33,7 @@
         <span>App</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-       <div class="d-xs-none">
+       <div class="d-none d-sm-block">
        <v-badge
           bordered
           bottom
