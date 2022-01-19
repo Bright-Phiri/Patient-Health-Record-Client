@@ -7,7 +7,7 @@
             <v-card-text>
                <v-container fluid>
                  <v-row>
-                   <v-col xl="4" lg="4" md="6" sm="6" xs="12">
+                   <v-col cols="12" lg="4" sm="6" md="4">
                      <v-alert
                        border="left"
                        colored-border
@@ -25,7 +25,7 @@
                      </v-row>
                    </v-alert>
                    </v-col>
-                    <v-col xl="4" lg="4" md="6" sm="6" xs="12">
+                    <v-col cols="12" lg="4" sm="6" md="4">
                      <v-alert
                        border="left"
                        colored-border
@@ -43,7 +43,7 @@
                      </v-row>
                    </v-alert>
                    </v-col>
-                    <v-col xl="4" lg="4" md="6" sm="6" xs="12">
+                    <v-col cols="12" lg="4" sm="6" md="4">
                      <v-alert
                        border="left"
                        colored-border

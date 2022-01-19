@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-row align="center" justify="center">
-            <v-col class="col=xl-3 col-lg-3 col-sm-6 col-xs-5 col-md-4">
+            <v-col cols="12" sm="6" xs="12" md="4" lg="3">
                 <div class="text-center">
                      <v-avatar size="90" class="text-center">
                         <v-img src="../assets/logo.jpg"></v-img>
@@ -56,6 +56,7 @@ export default {
                    if (response.data.status === "success"){
                        sessionStorage.setItem("Authorization", response.data.token);
                        sessionStorage.setItem("avatar", response.data.avatar);
+                       sessionStorage.setItem("user",JSON.stringify(response.data.user));
                        this.$router.push({path: '/'})
                        this.loading = false
                    } else {

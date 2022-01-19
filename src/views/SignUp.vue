@@ -10,10 +10,10 @@
                 <p class="text-center font-weight-light">Sign up to HealthRecord</p> 
                 <v-card>
                     <v-card-text>
-                      <v-form ref="form" v-on:submit.prevent="signUp">
+                      <v-form ref="form" v-on:submit.prevent="signUp" enctype="multipart/form-data">
                            <v-text-field label="Username" autocomplete="false" prepend-icon="person" v-model.trim="user.username"></v-text-field>
                            <v-text-field label="Email" autocomplete="false" prepend-icon="mail" v-model.trim="user.email"></v-text-field>
-                           <v-file-input accept="image/*" label="File input" v-on:change="selectFile"></v-file-input>
+                           <v-file-input accept="image/*" show-size label="File input" v-on:change="selectFile"></v-file-input>
                            <v-text-field label="Password" autocomplete="false" prepend-icon="lock" type="password" v-model.trim="user.password"></v-text-field>
                            <v-text-field label="Password Confirmation" autocomplete="false" prepend-icon="lock" type="password"  v-model.trim="user.password_confirmation"></v-text-field>
                            <v-btn type="submit" dark color="primary" block :loading="loading">Sign up</v-btn>
@@ -46,8 +46,9 @@ export default {
        }
    },
    methods: {
-      selectFile(event) {
-        this.user.avatar = event.target.files[0];
+      selectFile(files) {
+        this.user.avatar = files;
+        console.log("The file is"+this.user.avatar)
       },
       signUp() {
       if (!this.user.username || !this.user.email || !this.user.password || !this.user.password_confirmation) {
