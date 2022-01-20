@@ -19,7 +19,7 @@
                 </v-card> 
                 <v-card class="mt-2">
                     <v-card-text>
-                      New to TaxPayer? <router-link to="/signup" >Create an account.</router-link> 
+                      New to HRecord? <router-link to="/signup" >Create an account.</router-link> 
                     </v-card-text>
                 </v-card>
             </v-col>

@@ -74,7 +74,7 @@ export default {
                   }
                 );
               } else {
-                this.$swal("Error", response.data.message, "error");
+                this.$swal("Error", response.data.message+", "+response.data.error+" ", "error");
                 this.loading = false
               }
             })
