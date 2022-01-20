@@ -52,7 +52,7 @@ export default {
       },
       signUp() {
       if (!this.user.username || !this.user.email || !this.user.password || !this.user.password_confirmation) {
-        this.$swal("Fields validation", "Please enter in all fields", "warning");
+        this.$swal("Fields validation", "Please fill in all required fields", "warning");
       } else {
         this.loading = true
         if (this.user.password === this.user.password_confirmation) {

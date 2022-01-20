@@ -262,7 +262,7 @@ export default {
   methods: {
     addPatient() {
       if (!this.patient.first_name || !this.patient.last_name || !this.patient.gender || !this.patient.dob || !this.patient.village || !this.patient.district || !this.patient.occupation) {
-        this.$swal("Fields validation","Please enter in all fields","warning")
+        this.$swal("Fields validation","Please fill in all required fields","warning")
       } else {
         this.addLoading1 = true
         let patientPayload = {
@@ -346,7 +346,7 @@ export default {
     },
     addHealthRecord(){
        if (!this.vital_signs.weight || !this.vital_signs.height || !this.vital_signs.diagnosis || !this.vital_signs.temp_reading) {
-        this.$swal("Fields validation","Please enter in all fields","warning");
+        this.$swal("Fields validation","Please fill in all required fields","warning");
       } else {
         this.addLoading = true
         let vital_signsPayload = {
