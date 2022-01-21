@@ -1,6 +1,5 @@
 # final
 
-https://healthrecord.netlify.app
 
 ## Project setup
 ```
