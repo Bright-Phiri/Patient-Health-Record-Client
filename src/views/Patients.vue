@@ -137,7 +137,7 @@
              </v-card-title>
              <v-card-text>
                <div class="col-lg-3 col-xl-3 col-xm-12 col-sm-5 col-md-3 pa-0"> <v-text-field dense label="Search" v-model="search"  append-icon="mdi-magnify"></v-text-field></div>
-               <v-data-table dense class="elevation-1" :headers="headers" :items="patients" :loading="loading" loading-text="Loading patients...Please wait" :search="search">
+               <v-data-table dense class="elevation-1" :headers="headers" :items="patients" items-per-page="7" :loading="loading" loading-text="Loading patients...Please wait" :search="search">
                   <template v-slot:[`item.healthrecord`]="{ item }">
                    <v-icon small class="mr-2" v-on:click="selectRecord(item.id)" color="primary">mdi-plus-thick</v-icon>
                    <v-icon small color="teal" v-on:click="viewHealthRecord(item.id)">mdi-eye</v-icon>

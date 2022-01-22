@@ -9,7 +9,7 @@
              </v-card-title>
              <v-card-text>
                <div class="col-lg-3 col-xl-3 col-xm-12 col-sm-5 col-md-3 pa-0"> <v-text-field dense label="Search" v-model="search"  append-icon="mdi-magnify"></v-text-field></div>
-               <v-data-table dense class="elevation-1" :headers="headers" :items="providers" :search="search" :loading="loading" loading-text="Loading providers...Please wait">
+               <v-data-table dense class="elevation-1" :headers="headers" :items="providers" :search="search" :loading="loading" items-per-page="7" loading-text="Loading providers...Please wait">
 
                </v-data-table>
              </v-card-text>
