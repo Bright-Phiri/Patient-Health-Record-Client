@@ -65,6 +65,7 @@ export default {
           { title: 'Home', icon: 'mdi-home-city', route: '/' },
           { title: 'Providers', icon: 'mdi-account-group-outline', route: '/providers'},
           { title: 'Patients', icon: 'mdi-account-group-outline', route: '/patients' },
+          { title: 'Settings', icon: 'mdi-cogs', route: '/settings' }
         ],
         avatar: null,
         username: null

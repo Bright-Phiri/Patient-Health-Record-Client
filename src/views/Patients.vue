@@ -133,8 +133,10 @@
              <v-card-title class="d-flex">
                  <p>Patients list</p>
                  <v-spacer></v-spacer>
-                 <v-btn dark class="primary" v-on:click="newPatient"> <v-icon left>mdi-account</v-icon>New Patient</v-btn>
+                 <v-btn small dark class="teal" v-on:click="exportToPdf"><v-icon left>mdi-file-export</v-icon> Export</v-btn> &nbsp;
+                 <v-btn dark small class="primary" v-on:click="newPatient"> <v-icon left>mdi-account</v-icon>New Patient</v-btn>
              </v-card-title>
+             <v-divider class="mx-4"></v-divider>
              <v-card-text>
                <div class="col-lg-3 col-xl-3 col-xm-12 col-sm-5 col-md-3 pa-0"> <v-text-field dense label="Search" v-model="search"  append-icon="mdi-magnify"></v-text-field></div>
                <v-data-table dense class="elevation-1" :headers="headers" :items="patients" :items-per-page="7" :loading="loading" loading-text="Loading patients...Please wait" :search="search">
@@ -152,11 +154,15 @@
 
 <script>
 import axios from 'axios'
+import jsPDF from 'jspdf'
+import 'jspdf-autotable'
+
 export default {
   name: 'Patients',
   data () {
     return{
       search: '',
+      heading: 'Patients',
       loading: false,
       addLoading: false,
       addLoading1: false,
@@ -383,6 +389,32 @@ export default {
             this.addLoading = false
           });
         }
+    },
+     exportToPdf(){
+       const columns = [
+        { title: "ID", dataKey: "id" },
+        { title: "First Name", dataKey: "first_name" },
+        { title: "Last Name", dataKey: "last_name" },
+        { title: "Gender", dataKey: "gender" },
+        { title: "Date of Birth", dataKey: "dob" },
+        { title: "District", dataKey: "district" },
+        { title: "Village", dataKey: "village" },
+        { title: "Occupation", dataKey: "occupation" },
+      ];
+      const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "in",
+        format: "letter"
+      });
+      // Using autoTable plugin
+      doc.autoTable({
+        columns,
+        body: this.patients,
+        //margin: { left: 0.5, top: 1.25 }
+      });
+
+      // Creating footer and saving file
+      doc.save(`${this.heading}.pdf`);
     },
     cancel() {
        this.$refs.form.reset()

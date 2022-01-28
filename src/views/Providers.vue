@@ -7,10 +7,10 @@
              <v-card-title class="d-flex">
                  <p>Providers list</p>
              </v-card-title>
+             <v-divider class="mx-4"></v-divider>
              <v-card-text>
                <div class="col-lg-3 col-xl-3 col-xm-12 col-sm-5 col-md-3 pa-0"> <v-text-field dense label="Search" v-model="search"  append-icon="mdi-magnify"></v-text-field></div>
                <v-data-table dense class="elevation-1" :headers="headers" :items="providers" :search="search" :loading="loading" :items-per-page="5" loading-text="Loading providers...Please wait">
-
                </v-data-table>
              </v-card-text>
           </v-card>
@@ -21,6 +21,7 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   name: 'Providers',
   data () {
@@ -43,7 +44,7 @@ export default {
         },
 
       ],
-      providers: []
+      providers: [],
     }
   },
   methods: {
@@ -59,7 +60,7 @@ export default {
         .catch((error) => {
           this.$swal("Error", error + ", Couldn't reach API", "error");
         });
-    }
+    },
   },
   mounted() {
     this.loadProviders()
