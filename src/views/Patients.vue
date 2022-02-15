@@ -131,10 +131,10 @@
          </v-dialog>
           <v-card shaped>
              <v-card-title class="d-flex">
-                 <p>Patients list</p>
+                 <p class="font-weight-light">Patients list</p>
                  <v-spacer></v-spacer>
                  <v-btn small dark class="teal" v-on:click="exportToPdf"><v-icon left>mdi-file-export</v-icon> Export</v-btn> &nbsp;
-                 <v-btn dark small class="primary" v-on:click="newPatient"> <v-icon left>mdi-account</v-icon>New Patient</v-btn>
+                 <v-btn dark small class="primary" v-on:click="newPatient"> <v-icon left>mdi-account-plus</v-icon>New Patient</v-btn>
              </v-card-title>
              <v-divider class="mx-4"></v-divider>
              <v-card-text>
@@ -142,7 +142,8 @@
                <v-data-table dense class="elevation-1" :headers="headers" :items="patients" :items-per-page="7" :loading="loading" loading-text="Loading patients...Please wait" :search="search">
                   <template v-slot:[`item.healthrecord`]="{ item }">
                    <v-icon small class="mr-2" v-on:click="selectRecord(item.id)" color="primary">mdi-plus-thick</v-icon>
-                   <v-icon small color="teal" v-on:click="viewHealthRecord(item.id)">mdi-eye</v-icon>
+                   <v-icon small color="teal" class="mr-2" v-on:click="viewHealthRecord(item.id)">mdi-eye</v-icon>
+                   <v-icon small color="red" v-on:click="deletePatient(item.id)">mdi-delete</v-icon>
                  </template>
                </v-data-table>
              </v-card-text>
@@ -349,6 +350,9 @@ export default {
     selectRecord(patient_id){
        this.vital_signs.patient_id = patient_id
        this.addDialog = true
+    },
+    deletePatient(patient_id){
+       alert(patient_id);
     },
     addHealthRecord(){
        if (!this.vital_signs.weight || !this.vital_signs.height || !this.vital_signs.diagnosis || !this.vital_signs.temp_reading) {

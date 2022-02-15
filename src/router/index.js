@@ -48,6 +48,19 @@ const routes = [{
                     }
                 }
             },
+            {
+                path: '/settings',
+                name: 'settings',
+                component: () =>
+                    import ('../views/Settings.vue'),
+                beforeEnter(to, from, next) {
+                    if (sessionStorage.getItem("Authorization") == null) {
+                        next({ path: "/login" })
+                    } else {
+                        next();
+                    }
+                }
+            }
         ]
     },
     {
