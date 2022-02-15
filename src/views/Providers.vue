@@ -5,7 +5,7 @@
        <v-col cols="12">
           <v-card shaped>
              <v-card-title class="d-flex">
-                 <p>Providers list</p>
+                 <p class="font-weight-light">Providers list</p>
              </v-card-title>
              <v-divider class="mx-4"></v-divider>
              <v-card-text>
