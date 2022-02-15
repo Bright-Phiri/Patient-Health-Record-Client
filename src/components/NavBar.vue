@@ -60,7 +60,7 @@ export default {
   name: 'Navbar',
   data () {
      return{
-       drawer: false,
+       drawer: null,
        items: [
           { title: 'Home', icon: 'mdi-home-city', route: '/' },
           { title: 'Providers', icon: 'mdi-account-group-outline', route: '/providers'},

@@ -14,7 +14,7 @@
     "@capacitor/ios": "^3.3.4",
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
-    "jspdf": "^2.5.0",
+    "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.23",
     "vue": "^2.6.11",
     "vue-axios": "^3.4.0",
