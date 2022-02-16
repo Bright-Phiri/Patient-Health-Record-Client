@@ -23,12 +23,22 @@
                     <v-card-text>
                       <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field label="Username" dense></v-text-field>
+                          <v-text-field label="Username" dense prepend-icon="person"></v-text-field>
                         </v-col>
                       </v-row>
                       <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field type="email" label="Email" dense></v-text-field>
+                          <v-text-field type="email" label="Email" dense prepend-icon="mail"></v-text-field>
+                        </v-col>
+                      </v-row>
+                      <v-row dense>
+                        <v-col cols="12" xl="5" lg="6" sm="7" md="7">
+                          <v-file-input accept="image/*" show-size label="File input"></v-file-input>
+                        </v-col>
+                      </v-row>
+                      <v-row dense>
+                        <v-col cols="12" xl="5" lg="6" sm="7" md="7">
+                          <v-text-field type="password" label="Enter password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                       </v-row>
                     </v-card-text>
@@ -45,17 +55,17 @@
                     <v-card-text>
                       <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field type="password" label="Enter old password" dense></v-text-field>
+                          <v-text-field type="password" label="Enter old password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                       </v-row>
                       <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                         <v-text-field type="password" label="New password" dense></v-text-field>
+                         <v-text-field type="password" label="New password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                       </v-row>
                       <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                         <v-text-field type="password" label="Confirm password" dense></v-text-field>
+                         <v-text-field type="password" label="Confirm password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                       </v-row>
                     </v-card-text>

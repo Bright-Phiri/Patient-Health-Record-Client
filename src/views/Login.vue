@@ -12,7 +12,7 @@
                     <v-card-text>
                       <v-form v-on:submit.prevent="signIn">
                            <v-text-field label="Username" autocomplete="false" prepend-icon="person" v-model.trim="user.username"></v-text-field>
-                           <v-text-field label="Password" autocomplete="false" prepend-icon="lock" type="password" v-model.trim="user.password"></v-text-field>
+                           <v-text-field label="Password" autocomplete="false" prepend-icon="mdi-lock-open" type="password" v-model.trim="user.password"></v-text-field>
                            <v-btn type="submit" dark color="primary" block :loading="loading">Sign in</v-btn>
                       </v-form>
                     </v-card-text>
