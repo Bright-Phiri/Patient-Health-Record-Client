@@ -352,7 +352,24 @@ export default {
        this.addDialog = true
     },
     deletePatient(patient_id){
-       alert(patient_id);
+      let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/patients/${patient_id}`;
+      axios
+        .delete(pHRsAPIEndpoint,{
+            headers: {
+              Authorization: `Bearer ${sessionStorage.getItem("Authorization")}`,
+            },
+          })
+        .then((response) =>{
+           if (response.data.status === "success"){
+              this.$swal("Message", response.data.message, "success").then(() => {
+                  this.loadPatients()
+                }
+              );
+           }
+        })
+        .catch((error) =>{
+          this.$swal("Error", error + ", Couldn't reach API", "error");
+        })
     },
     addHealthRecord(){
        if (!this.vital_signs.weight || !this.vital_signs.height || !this.vital_signs.diagnosis || !this.vital_signs.temp_reading) {
