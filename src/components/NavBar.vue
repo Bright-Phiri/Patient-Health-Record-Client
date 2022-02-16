@@ -3,8 +3,14 @@
     <nav>
       <v-navigation-drawer color="primary" app v-model="drawer">
         <div class="d-flex flex-column align-center mt-5">
-          <v-avatar color="white" size="75">
-            <v-img :src="avatar"></v-img>
+          <v-avatar size="75">
+            <v-img :src="avatar">
+              <template v-slot:placeholder>
+                <v-sheet>
+                  <v-skeleton-loader type="image"> </v-skeleton-loader>
+                </v-sheet>
+              </template>
+            </v-img>
           </v-avatar>
           <p class="white--text subheading mt-1 mr-6">{{ username }}</p>
         </div>
@@ -49,8 +55,14 @@
             offset-x="10"
             offset-y="10"
           >
-            <v-avatar size="35" color="white">
-              <v-img :src="avatar"></v-img>
+            <v-avatar size="35">
+              <v-img :src="avatar">
+                <template v-slot:placeholder>
+                  <v-sheet>
+                    <v-skeleton-loader type="image"> </v-skeleton-loader>
+                  </v-sheet>
+                </template>
+              </v-img>
             </v-avatar>
           </v-badge>
         </div>
@@ -61,16 +73,16 @@
       </v-app-bar>
     </nav>
     <router-view />
-   <Footer></Footer>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Footer from '@/components/Footer.vue'
+import Footer from "@/components/Footer.vue";
 export default {
   name: "Navbar",
   components: {
-     Footer
+    Footer,
   },
   data() {
     return {
