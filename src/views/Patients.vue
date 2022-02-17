@@ -129,7 +129,7 @@
              </v-card-actions>
            </v-card>
          </v-dialog>
-          <v-card shaped>
+          <v-card shaped >
              <v-card-title class="d-flex">
                  <p class="font-weight-light">Patients list</p>
                  <v-spacer></v-spacer>
@@ -353,7 +353,18 @@ export default {
     },
     deletePatient(patient_id){
       let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/patients/${patient_id}`;
-      axios
+      this.$swal({
+          title: 'Delete Patient',
+          text: "Are you sure you want to delete this patient?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes'
+      })
+      .then((result) => {
+      if (result.isConfirmed) {
+       axios
         .delete(pHRsAPIEndpoint,{
             headers: {
               Authorization: `Bearer ${sessionStorage.getItem("Authorization")}`,
@@ -370,6 +381,8 @@ export default {
         .catch((error) =>{
           this.$swal("Error", error + ", Couldn't reach API", "error");
         })
+  } 
+});
     },
     addHealthRecord(){
        if (!this.vital_signs.weight || !this.vital_signs.height || !this.vital_signs.diagnosis || !this.vital_signs.temp_reading) {

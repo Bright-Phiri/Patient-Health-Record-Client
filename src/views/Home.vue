@@ -3,7 +3,7 @@
     <h3 class="subheading grey--text font-weight-light">Home</h3>
     <v-row>
       <v-col cols="12">
-        <v-card shaped>
+        <v-card shaped height="470">
           <v-card-text>
             <v-container fluid>
               <v-row>
