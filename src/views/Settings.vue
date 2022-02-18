@@ -21,30 +21,30 @@
                       Update User Info
                     </v-card-title>
                     <v-card-text>
-                      <v-row dense>
+                      <v-form v-on:submit.prevent="updateUser">
+                        <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field label="Username" dense prepend-icon="person"></v-text-field>
+                          <v-text-field v-model="user.username" label="Username" dense prepend-icon="person"></v-text-field>
                         </v-col>
-                      </v-row>
-                      <v-row dense>
+                        </v-row>
+                        <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field type="email" label="Email" dense prepend-icon="mail"></v-text-field>
+                          <v-text-field type="email" v-model="user.email" label="Email" dense prepend-icon="mail"></v-text-field>
                         </v-col>
-                      </v-row>
-                      <v-row dense>
+                        </v-row>
+                        <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
                           <v-file-input accept="image/*" show-size label="File input"></v-file-input>
                         </v-col>
-                      </v-row>
-                      <v-row dense>
+                        </v-row>
+                        <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field type="password" label="Enter password" dense prepend-icon="lock"></v-text-field>
+                          <v-text-field type="password" v-model="user.password" label="Enter password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
-                      </v-row>
+                        </v-row>
+                        <v-btn class="secondary">Cancel</v-btn>  <v-btn type="submit" class="primary">Save</v-btn>
+                      </v-form>
                     </v-card-text>
-                    <v-card-actions>
-                      <v-btn class="secondary">Cancel</v-btn>  <v-btn class="primary">Save</v-btn>
-                    </v-card-actions>
                   </v-card>
                 </v-tab-item>
                 <v-tab-item>
@@ -53,25 +53,25 @@
                       Change Password
                     </v-card-title>
                     <v-card-text>
-                      <v-row dense>
+                      <v-form ref="passwordForm" v-on:submit.prevent="changePassword">
+                        <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field type="password" label="Enter old password" dense prepend-icon="lock"></v-text-field>
+                          <v-text-field type="password" v-model="user.oldPassword" label="Enter old password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                       </v-row>
                       <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                         <v-text-field type="password" label="New password" dense prepend-icon="lock"></v-text-field>
+                         <v-text-field type="password" v-model="user.newPassword" label="New password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                       </v-row>
                       <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                         <v-text-field type="password" label="Confirm password" dense prepend-icon="lock"></v-text-field>
+                         <v-text-field type="password" v-model="user.confirmPassword" label="Confirm new password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                       </v-row>
+                       <v-btn class="secondary">Cancel</v-btn>  <v-btn type="submit" class="primary">Save</v-btn>
+                      </v-form>
                     </v-card-text>
-                    <v-card-actions>
-                      <v-btn class="secondary">Cancel</v-btn>  <v-btn class="primary">Save</v-btn>
-                    </v-card-actions>
                   </v-card>
                 </v-tab-item>
               </v-tabs>
@@ -87,7 +87,24 @@
 export default {
   name: "Settings",
   data() {
-    return {};
+    return {
+      user: {
+        username: null,
+        email: null,
+        avatar: null,
+        password: null,
+        oldPassword: null,
+        newPassword: null,
+        confirmPassword: null,
+      }
+    };
   },
+  methods:{
+    changePassword(){
+       if (!this.user.oldPassword || !this.user.newPassword || !this.user.confirmPassword){
+        this.$swal("Fields validation","Please fill in all required fields","warning");
+       }
+    }
+  }
 };
 </script>
