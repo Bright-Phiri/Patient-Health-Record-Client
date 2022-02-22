@@ -24,12 +24,12 @@
                       <v-form v-on:submit.prevent="updateUser">
                         <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field v-model="user.username" label="Username" dense prepend-icon="person"></v-text-field>
+                          <v-text-field v-model.trim="user.username" label="Username" dense prepend-icon="person"></v-text-field>
                         </v-col>
                         </v-row>
                         <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field type="email" v-model="user.email" label="Email" dense prepend-icon="mail"></v-text-field>
+                          <v-text-field type="email" v-model.trim="user.email" label="Email" dense prepend-icon="mail"></v-text-field>
                         </v-col>
                         </v-row>
                         <v-row dense>
@@ -39,7 +39,7 @@
                         </v-row>
                         <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field type="password" v-model="user.password" label="Enter password" dense prepend-icon="lock"></v-text-field>
+                          <v-text-field type="password" v-model.trim="user.password" label="Enter password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                         </v-row>
                         <v-btn class="secondary">Cancel</v-btn>  <v-btn type="submit" class="primary">Save</v-btn>
@@ -56,17 +56,17 @@
                       <v-form ref="passwordForm" v-on:submit.prevent="changePassword">
                         <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-text-field type="password" v-model="user.oldPassword" label="Enter old password" dense prepend-icon="lock"></v-text-field>
+                          <v-text-field type="password" v-model.trim="user.oldPassword" label="Enter old password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                       </v-row>
                       <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                         <v-text-field type="password" v-model="user.newPassword" label="New password" dense prepend-icon="lock"></v-text-field>
+                         <v-text-field type="password" v-model.trim="user.newPassword" label="New password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                       </v-row>
                       <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                         <v-text-field type="password" v-model="user.confirmPassword" label="Confirm new password" dense prepend-icon="lock"></v-text-field>
+                         <v-text-field type="password" v-model.trim="user.confirmPassword" label="Confirm new password" dense prepend-icon="lock"></v-text-field>
                         </v-col>
                       </v-row>
                        <v-btn class="secondary">Cancel</v-btn>  <v-btn type="submit" class="primary">Save</v-btn>
