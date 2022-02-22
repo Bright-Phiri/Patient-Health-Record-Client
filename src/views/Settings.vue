@@ -34,7 +34,7 @@
                         </v-row>
                         <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-file-input accept="image/*" show-size label="File input"></v-file-input>
+                          <v-file-input accept="image/*" show-size label="File input" v-on:change="selectFile" v-model="user.avatar"></v-file-input>
                         </v-col>
                         </v-row>
                         <v-row dense>
@@ -84,6 +84,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "Settings",
   data() {
@@ -100,11 +101,56 @@ export default {
     };
   },
   methods:{
+    selectFile(files) {
+      this.user.avatar = files;
+    },
+    updateUser(){
+      if (!this.user.username || !this.user.email || !this.user.avatar || !this.user.password){
+        this.$swal("Fields validation","Please fill in all required fields","warning");
+      } else{
+         let pass = sessionStorage.getItem("temp_pass")
+         const user = JSON.parse(sessionStorage.getItem("user"));
+         if (pass === this.user.password){
+            var userPayload = new FormData();
+            userPayload.append("username", this.user.username);
+            userPayload.append("email", this.user.email);
+            userPayload.append("avatar", this.user.avatar);
+            userPayload.append("password", this.user.password);
+            userPayload.append("password_confirmation",this.user.password);
+            let pHRsAPIEndpoint = `${sessionStorage.getItem("BASE_URL")}/users/${user.id}`;
+            axios
+               .put(pHRsAPIEndpoint,userPayload, {
+                    headers: {
+                      Authorization: `Bearer ${sessionStorage.getItem("Authorization")}`,
+                    },
+               })
+               .then((response)=>{
+                 this.$swal("Message", response.data.message, "success")
+               })
+               .catch((error)=>{
+                 this.$swal("Error", error + ", Couldn't reach API", "error");
+               })
+         }else{
+           this.$swal("Error","Old password is incorrect","error");
+         }
+      }
+    },
     changePassword(){
        if (!this.user.oldPassword || !this.user.newPassword || !this.user.confirmPassword){
         this.$swal("Fields validation","Please fill in all required fields","warning");
        }
+    },
+    setUser(){
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      let avatar = sessionStorage.getItem("avatar")
+      this.user.username = user.username
+      this.user.email = user.email
+      this.user.avatar = avatar
+      
     }
+  },
+  mounted(){
+    this.setUser()
   }
 };
 </script>

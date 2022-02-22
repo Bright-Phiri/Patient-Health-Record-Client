@@ -48,7 +48,6 @@ export default {
    methods: {
       selectFile(files) {
         this.user.avatar = files;
-        console.log("The file is"+this.user.avatar)
       },
       signUp() {
       if (!this.user.username || !this.user.email || !this.user.password || !this.user.password_confirmation) {

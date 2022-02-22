@@ -57,6 +57,7 @@ export default {
                        sessionStorage.setItem("Authorization", response.data.token);
                        sessionStorage.setItem("avatar", response.data.avatar);
                        sessionStorage.setItem("user",JSON.stringify(response.data.user));
+                       sessionStorage.setItem("temp_pass", this.user.password);
                        this.$router.push({path: '/'})
                        this.loading = false
                    } else {
