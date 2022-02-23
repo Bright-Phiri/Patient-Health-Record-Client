@@ -34,7 +34,7 @@
                         </v-row>
                         <v-row dense>
                         <v-col cols="12" xl="5" lg="6" sm="7" md="7">
-                          <v-file-input accept="image/*" show-size label="File input" v-on:change="selectFile" v-model="user.avatar"></v-file-input>
+                          <v-file-input accept="image/*" show-size label="Avatar" v-on:change="selectFile" v-model="user.avatar"></v-file-input>
                         </v-col>
                         </v-row>
                         <v-row dense>
