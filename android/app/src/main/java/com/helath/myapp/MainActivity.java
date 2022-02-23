@@ -1,4 +1,4 @@
-package healthapp.com;
+package com.helath.myapp;
 
 import com.getcapacitor.BridgeActivity;
 

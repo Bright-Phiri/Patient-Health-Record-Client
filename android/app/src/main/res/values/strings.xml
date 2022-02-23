@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">healthapp</string>
-    <string name="title_activity_main">healthapp</string>
-    <string name="package_name">healthapp.com</string>
-    <string name="custom_url_scheme">healthapp.com</string>
+    <string name="app_name">Health App</string>
+    <string name="title_activity_main">Health App</string>
+    <string name="package_name">com.helath.myapp</string>
+    <string name="custom_url_scheme">com.helath.myapp</string>
 </resources>

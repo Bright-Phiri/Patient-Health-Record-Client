@@ -1,6 +1,6 @@
 {
-  "appId": "healthapp.com",
-  "appName": "healthapp",
+  "appId": "com.helath.myapp",
+  "appName": "Health App",
   "webDir": "dist",
   "bundledWebRuntime": false
 }
