@@ -73,7 +73,7 @@ export default {
                   }
                 );
               } else {
-                this.$swal("Error", response.data.message+", "+response.data.error+" ", "error");
+                this.$swal(response.data.status, response.data.message +", "+response.data.errors, response.data.status)
                 this.loading = false
               }
             })

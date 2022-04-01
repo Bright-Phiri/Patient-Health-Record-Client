@@ -296,7 +296,7 @@ export default {
                this.loadPatients()
                });
             } else{
-              this.$swal("error", response.data.message, "error")
+              this.$swal(response.data.status, response.data.message +", "+response.data.errors, response.data.status)
               this.addLoading1 = false
             }
           })
@@ -414,7 +414,7 @@ export default {
                 }
               );
             } else {
-              this.$swal("Error", response.data.message, "error");
+              this.$swal(response.data.status, response.data.message +", "+response.data.errors, response.data.status)
               this.addLoading = false
             }
           })
